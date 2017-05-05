@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->listView->setVisible(false);
     QObject::connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(executeCmd()));
+    QObject::connect(ui->listView, SIGNAL(clicked(QModelIndex)), this, SLOT(handleDevicesItemClick(QModelIndex)));
 
 }
 void MainWindow::executeCmd(){
@@ -36,6 +37,10 @@ void MainWindow::executeCmd(){
     ui->listView->setVisible(true);
     QStringListModel *models = new QStringListModel(devices);
     ui->listView->setModel(models);
+}
+
+void MainWindow::handleDevicesItemClick(QModelIndex index){
+    qDebug()<<"click list view row:"+index.row();
 }
 
 MainWindow::~MainWindow()

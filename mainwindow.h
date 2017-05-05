@@ -17,6 +17,7 @@ public:
 
 public slots:
    void executeCmd();
+   void handleDevicesItemClick(QModelIndex);
 
 private:
     Ui::MainWindow *ui;
